@@ -16,12 +16,15 @@
  * */
 var http = require('http');
 var url = require('url');
-
+var reqcount = 0;
 http.createServer(function (req, res) {
 
     var url_parts = url.parse(req.url, true);
     var pathname = url_parts.pathname;
     var host = (url_parts.host || '');
+
+    reqcount++;
+
 
     if(pathname == "/")
     {
@@ -29,6 +32,7 @@ http.createServer(function (req, res) {
     }
     else
     {
+        res.write("serving request " + reqcount + "\n");
         sleep(res);
     }
 
