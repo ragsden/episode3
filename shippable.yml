@@ -3,5 +3,4 @@ node_js:
   - "0.10.15"
 before_script: mkdir -p shippable/codecoverage
 after_script: 
-  - ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -u tdd 
   - git push git@heroku.com:episode3.git
