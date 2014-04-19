@@ -13,6 +13,9 @@
   "engines": {
     "node": "0.10.15"
   },
+  "scripts": {
+    "test": "make test"
+  },
   "keywords": [
     "Learn",
     "Node",
