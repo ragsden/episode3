@@ -1,3 +1,5 @@
 language: node_js
 node_js:
   - "0.10.15"
+after_success:
+  - git push git@heroku.com:episode3.git
