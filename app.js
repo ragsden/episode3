@@ -16,19 +16,22 @@
  * */
 var http = require('http');
 var url = require('url');
+var util = require('util');
+
 var reqcount = 0;
 http.createServer(function (req, res) {
 
     var url_parts = url.parse(req.url, true);
     var pathname = url_parts.pathname;
     var host = (url_parts.host || '');
-
+    console.log('dddd');
+    console.log(util.inspect(req.body, {depth:100}));
     reqcount++;
 
 
     if(pathname == "/")
     {
-        frame(res,host);
+        frame(req, res,host);
     }
     else
     {
@@ -54,12 +57,19 @@ sleep = function (res)
     res.end("end time = " + new Date().getMinutes() + ":" + new Date().getSeconds()  + "\n")
 }
 
-frame = function (res, host)
+frame = function (req, res, host)
 {
-    res.write("<body><H1>This is the home page with two frames</H1>" +
-        "<iframe src='" + host + "/sleep'></iframe>" +
-        "<iframe src='" + host + "/sleep'></iframe>" +
-        "</body></html>");
+    var url_parts = url.parse(req.url, true);
+
+
+    res.write("<body><H1>This is the home page with two frames</H1>");
+    if(url_parts.query.testtxt){
+        res.write(url_parts.query.testtxt);
+    }
+    res.write("<form>");
+    res.write("<input type='text' name='testtxt' id='testtxt'/> <input type='submit' name='submit' />");
+    res.write("</form>");
+    res.write("</body></html>");
     res.end();
 
 }
