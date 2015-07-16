@@ -4,7 +4,7 @@
   "description": "This is the first episode in njmyway node js learning series",
   "main": "app.js",
   "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -13,9 +13,6 @@
   "engines": {
     "node": "0.10.15"
   },
-  "scripts": {
-    "test": "make test"
-  },
   "keywords": [
     "Learn",
     "Node",
@@ -23,5 +20,11 @@
   ],
   "author": "Raghu",
   "license": "BSD",
-  "gitHead": "80670579f8efd17fea17e6934146e31ce799841a"
+  "gitHead": "80670579f8efd17fea17e6934146e31ce799841a",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "url": "^0.10.3",
+    "util": "^0.10.3"
+  }
 }
